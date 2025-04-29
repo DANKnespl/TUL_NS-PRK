@@ -14,6 +14,7 @@
   - [Reusable code](#reusable-code)
   - [Stopping code execution](#stopping-code-execution)
   - [Variables? in this economy?](#variables-in-this-economy)
+  - [Data visualization](#data-visualization)
   - [DA RULEZ](#da-rulez)
     - [Delegate](#delegate)
     - [Logical expression](#logical-expression)
@@ -133,6 +134,14 @@ Stops the execution of the future code. Execution resumes after the next matchin
 **variable name** = [VALUE](#expression)
 
 Assigning a value to the variable with **variable name**.
+
+### Data visualization
+
+**\<present>**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[VALUE](#expression)  
+**\</present>**
+
+Function to visualize data in the terminal.
 
 ### DA RULEZ
 
