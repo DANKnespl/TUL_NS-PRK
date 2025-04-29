@@ -1,0 +1,118 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "DANK",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#operator"
+		},
+		{
+			"include": "#attributed"
+		},
+		{
+			"include": "#vars"
+		},
+		{
+			"include": "#tag_enders"
+		}
+	],
+	"repository": {
+		"vars": {
+			"patterns": [
+				{
+					"name": "entity.name.function.dank",
+					"match": "\\b[a-zA-Z_][a-zA-Z_0-9]*(?=\\()"
+				},
+				{
+					"name": "variable.name.dank",
+					"match": "[a-zA-Z_][a-zA-Z_0-9]*"
+				}
+			]
+		},
+		"operator": {
+			"patterns": [
+				{
+					"name": "keyword.operator.new.dank",
+					"match": "\\+|\\-|\\*|\\/|="
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.main.dank",
+					"match": "<cycle>|<present>"
+				},
+				{
+					"name": "keyword.control.main.dank",
+					"match": "</cycle>|</present>|</branch>|</delegate>"
+				},
+				{
+					"name": "keyword.control.special.dank",
+					"match": "</params>|<params>|<leave>"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.dank",
+			"begin": "\"",
+			"end": "\""
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block.dank",
+					"begin": "<comment>",
+					"end": "</comment>"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.dank",
+					"match": "\\b(?:[1-9][0-9]*\\.[0-9]*|[0-9]*\\.[0-9]+|[1-9][0-9]*|0)\\b"
+				}
+			]
+		},
+		"attributed": {
+			"patterns": [
+				{
+					"name": "keyword.control.main.dank",
+					"begin": "<delegate\\b|<branch\\b",
+					"end": ">",
+					"patterns": [
+						{
+							"name": "entity.other.attribute-name.dank",
+							"match": "name=|condition="
+						},
+						{
+							"name": "string.quoted.double.dank",
+							"match": "\"[^\"]*\""
+						}
+					]
+				}
+			]
+		},
+		"tag_enders": {
+			"patterns": [
+				{
+					"name": "entity.name.tag.dank",
+					"match": "</|<|>"
+				}
+			]
+		}
+	},
+	"scopeName": "source.dank"
+}

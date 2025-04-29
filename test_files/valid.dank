@@ -1,0 +1,186 @@
+<present></present>
+<comment>valid -> "" </comment>
+
+<present>1</present>
+<comment>valid -> 1.0 </comment>
+
+<present>1 + 1</present>
+<comment>valid -> 2.0 </comment>
+
+variable = 0
+<present> variable </present>
+<comment>valid -> 0.0 </comment>
+
+<present> "variable" </present>
+<comment>valid -> "variable"</comment>
+
+<present> +17 </present>
+<comment>valid -> 17.0 </comment>
+
+<present> (17) </present>
+<comment>valid -> 17.0 </comment>
+
+<present> (18 + (7 * 3) / 2) </present>
+<comment> valid -> 28.5 </comment>
+
+<present> ((18 + (7 * 3)) / 2) </present>
+<comment> valid -> 19.5 </comment>
+
+<present> (0+1) </present>
+<comment> valid -> 1.0 </comment>
+
+<present> 0+1 </present>
+<comment> valid -> 1.0 </comment>
+
+<present> (0+ 1) </present>
+<comment> valid -> 1.0 </comment>
+
+<present> 0++1 </present>
+<comment> valid -> 1.0 </comment>
+
+<present> 0+-1 </present>
+<comment> valid -> -1.0 </comment>
+
+<present> 0-+1 </present>
+<comment> valid -> -1.0 </comment>
+
+<present> 0--1 </present>
+<comment> valid -> 1.0 </comment>
+
+<present> 0-- 1 </present>
+<comment> valid -> 1.0 </comment>
+
+<present> 0 -- 1 </present>
+<comment> valid -> 1.0 </comment>
+
+<present> 1 / 2 / 2 / 2 / 2 </present>
+<comment> valid -> 0.0625 </comment>
+
+<present> 1 + 2 + 2 + 2 + 2 </present>
+<comment> valid -> 9.0 </comment>
+
+<comment> valid -> nic se neděje </comment>
+
+<present>"printed"</present>
+<leave>
+<present>"hidden"</present>
+<comment> valid -> "printed" </comment>
+
+<cycle>
+    <present>"printed"</present>
+    <leave>
+    <present>"hidden"</present>
+</cycle>
+<comment> valid -> "printed" </comment>
+
+var = 0
+<cycle>
+    <present>"printed"</present>
+    <branch condition="0<var">
+        <leave>
+    </branch>
+    var = var + 1
+    <present> var </present>
+</cycle>
+<comment> valid -> "printed" 1.0 "printed"</comment>
+
+<delegate name="fun">
+    <params></params>
+</delegate>
+<comment> valid </comment>
+
+<delegate name="print">
+    <params>par1</params>
+    <present>par1</present>
+</delegate>
+print("param")
+<comment> valid -> "param" </comment>
+
+
+<delegate name="add">
+    <params>par1,par2</params>
+    ret = par1 + par2
+</delegate>
+add(5,6)
+<present>ret</present>
+<comment> valid -> 11.0 </comment>
+
+<delegate name="power">
+    <params>par1,par2</params>
+    <delegate name="mul">
+        <params>par1,par2</params>
+        ret = par1 * par2
+    </delegate>
+    cnt = par2
+    val = 1
+    <cycle>
+        <branch condition="cnt<=0">
+            <leave>
+        </branch>
+        mul(val,par1)
+        val = ret
+        cnt = cnt - 1
+    </cycle>
+    ret = val
+</delegate>
+power(2,3)
+<present>ret</present>
+<comment> valid -> 8.0 </comment>
+
+<delegate name="fun">
+    <params>par1,par2</params>
+    ret = par1 + par2
+</delegate>
+<delegate name="fun">
+    <params>par1,par2</params>
+    ret = par1 * par2
+</delegate>
+fun(5,6)
+<present>ret</present>
+<comment> valid -> 30.0 </comment>
+
+ret = 0
+<delegate name="fun">
+    <params>par1,par2</params>
+    ret = par1 + par2
+</delegate>
+fun(5,6)
+<present>ret</present>
+<comment> valid -> 11.0 </comment>
+
+<branch condition="-5<5">
+    <present> "true" </present>
+</branch>
+<comment> valid -> "true" </comment>
+
+var = "5.0"
+<branch condition="var=5">
+    <present> "true" </present>
+</branch>
+<comment> valid -> "true"</comment>
+
+var = "5"
+<branch condition="var=5">
+    <present> "true" </present>
+</branch>
+<branch condition="var~5">
+    <present> "false" </present>
+</branch>
+<comment> valid -> "false" </comment>
+
+
+sum = 0
+<delegate name="sum">
+    <params>par1,par2</params>
+    ret = par1 + par2
+</delegate>
+sum(1,2)
+<present>sum + ", " + ret</present>
+<comment> valid -> "0.0, 3.0" </comment>
+
+<delegate name="print">
+    <params>par1</params>
+    <present> par1 </present>
+</delegate>
+print(((152*1-2+50)/25))
+<comment> valid -> 8.0 </comment>

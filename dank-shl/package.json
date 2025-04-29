@@ -1,0 +1,25 @@
+{
+  "name": "dank-shl",
+  "displayName": "DANK SHL",
+  "description": "Syntax Highlighting for DANK Language",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "dank",
+      "aliases": ["DANK", "dank"],
+      "extensions": [".dank"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "dank",
+      "scopeName": "source.dank",
+      "path": "./syntaxes/dank.tmLanguage.json"
+    }]
+  }
+}

@@ -1,0 +1,94 @@
+variable = 0
+<present> variable = 0</present>
+<comment> invalid -> syntax error</comment>
+
+<present>variable</present>
+<comment>invalid -> undefined variable </comment>
+
+<present> 'variable' </present>
+<comment>invalid -> syntax error</comment>
+
+<present> () </present>
+<comment>invalid -> syntax error</comment>
+
+<present> +(17) </present>
+<comment>invalid -> syntax error</comment>
+
+<present> ++17 </present>
+<comment> invalid -> syntax error</comment>
+
+<present> 0-+-1 </present>
+<comment> invalid -> syntax error </comment>
+
+<delegate name=""></delegate>
+<comment> invalid -> syntax error</comment>
+
+<delegate name="fun"></delegate>
+<comment> invalid -> syntax error</comment>
+
+<delegate name="fun">
+    <params></params>
+</delegate>
+fun("param")
+<comment> invalid -> syntax error</comment>
+
+<delegate name="add">
+    <params>par1,par2</params>
+    out = par1 + par2
+</delegate>
+add(5,6)
+<present>out</present>
+<comment> invalid -> undefined variable </comment>
+
+<delegate name="power">
+    <params>par1,par2</params>
+    <delegate name="mul">
+        <params>par1,par2</params>
+        ret = par1 * par2
+    </delegate>
+    cnt = par2
+    val = 1
+    <cycle>
+        <branch condition="cnt<=0">
+            <leave>
+        </branch>
+        mul(val,par1)
+        val = ret
+        cnt = cnt - 1
+    </cycle>
+    ret = val
+</delegate>
+mul(2,3)
+<present>ret</present>
+<comment> invalid -> undefined function</comment>
+
+<delegate name="fun">
+    <params>par1,par2</params>
+    <branch condition="0=0">
+        <leave>
+    </branch>
+    ret = par1 + par2
+</delegate>
+fun(5,6)
+<present>ret</present>
+<comment> invalid -> undefined variable </comment>
+
+<delegate name="fun">
+    <params>par1,par1</params>
+    ret = par1 + par1
+</delegate>
+fun(5,6)
+<present>ret</present>
+<comment> invalid -> conflicting function parameters</comment>
+
+<branch condition=""5"<5">
+    <present> "true" </present>
+</branch>
+<comment> invalid -> syntax error </comment>
+
+<delegate name="print">
+    <params>par1</params>
+    <present> par1 </present>
+</delegate>
+print((152*1-2+50)/25)
+<comment> invalid -> syntax error </comment>
