@@ -102,7 +102,7 @@ print("param")
     ret = par1 + par2
 </delegate>
 add(5,6)
-<present>ret</present>
+<present>add</present>
 <comment> valid -> 11.0 </comment>
 
 <delegate name="power">
@@ -118,13 +118,13 @@ add(5,6)
             <leave>
         </branch>
         mul(val,par1)
-        val = ret
+        val = mul
         cnt = cnt - 1
     </cycle>
     ret = val
 </delegate>
 power(2,3)
-<present>ret</present>
+<present>power</present>
 <comment> valid -> 8.0 </comment>
 
 <delegate name="fun">
@@ -136,16 +136,16 @@ power(2,3)
     ret = par1 * par2
 </delegate>
 fun(5,6)
-<present>ret</present>
+<present>fun</present>
 <comment> valid -> 30.0 </comment>
 
-ret = 0
+fun = 0
 <delegate name="fun">
     <params>par1,par2</params>
     ret = par1 + par2
 </delegate>
 fun(5,6)
-<present>ret</present>
+<present>fun</present>
 <comment> valid -> 11.0 </comment>
 
 <branch condition="-5<5">
@@ -168,19 +168,10 @@ var = "5"
 </branch>
 <comment> valid -> "false" </comment>
 
-
-sum = 0
-<delegate name="sum">
-    <params>par1,par2</params>
-    ret = par1 + par2
-</delegate>
-sum(1,2)
-<present>sum + ", " + ret</present>
-<comment> valid -> "0.0, 3.0" </comment>
-
 <delegate name="print">
     <params>par1</params>
     <present> par1 </present>
 </delegate>
 print(((152*1-2+50)/25))
 <comment> valid -> 8.0 </comment>
+

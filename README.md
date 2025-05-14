@@ -117,7 +117,7 @@ Block of code which is only executed if condition is true.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CODE  
 **\</delegate>**
 
-Defines a block of code that can be called to be executed at different parts of code. The **CODE** part may contain variable definition of [ret variable](#variables-in-this-economy). The [ret variable](#variables-in-this-economy) will be transferred outside of the delegate once finished.
+Defines a block of code that can be called to be executed at different parts of code. The **CODE** part may contain variable definition of [ret variable](#variables-in-this-economy). The [ret variable](#variables-in-this-economy) will be transferred outside of the delegate into [function_name variable](#variables-in-this-economy) once finished.
 
 **function_name**([VALUES](#expression))
 

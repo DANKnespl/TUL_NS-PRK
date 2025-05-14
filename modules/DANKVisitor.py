@@ -287,7 +287,7 @@ class DANKVisitor(ParseTreeVisitor):
             
             self.execute_stack = execute_stack_copy.copy()
             if "ret" in self.variables.keys():
-                variable_copy["ret"] = self.variables["ret"]
+                variable_copy[function_name] = self.variables["ret"]
             self.variables = variable_copy.copy()
             self.loop = loop_copy
             self.functions = function_copy.copy()

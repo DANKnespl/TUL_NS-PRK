@@ -59,7 +59,7 @@ add(5,6)
     ret = val
 </delegate>
 mul(2,3)
-<present>ret</present>
+<present>mul</present>
 <comment> invalid -> undefined function</comment>
 
 <delegate name="fun">
@@ -70,7 +70,7 @@ mul(2,3)
     ret = par1 + par2
 </delegate>
 fun(5,6)
-<present>ret</present>
+<present>fun</present>
 <comment> invalid -> undefined variable </comment>
 
 <delegate name="fun">
